@@ -119,9 +119,10 @@ namespace UnityEngine.XR.ARFoundation.Samples
         }
 
 
-        public void ExitARScene()
+        public void Back()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.UnloadScene(2);
+            UIAppManager.instance.DisableCanvas();
         }
     }
 }

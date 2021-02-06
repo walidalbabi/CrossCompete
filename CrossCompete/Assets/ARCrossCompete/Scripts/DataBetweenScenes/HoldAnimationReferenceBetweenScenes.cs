@@ -22,16 +22,30 @@ public class HoldAnimationReferenceBetweenScenes : MonoBehaviour
 
     public void AnimationID(string animID)
     {
-        StartCoroutine(Loading());
+        StartCoroutine(Loading(1));
 
         _AnimationID = animID;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2,LoadSceneMode.Additive);
+        UIAppManager.instance.DisableCanvas();
     }
 
-    private IEnumerator Loading()
+    private IEnumerator Loading(float time)
     {
         LoadingPanel.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(time);
+        LoadingPanel.SetActive(false);
+    }
+
+
+    //Loading Functions
+
+    public void StartLoading()
+    {
+        LoadingPanel.SetActive(true);
+    }
+
+    public void StopLoading()
+    {
         LoadingPanel.SetActive(false);
     }
 }

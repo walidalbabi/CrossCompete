@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UIAppManager : Singleton<UIAppManager>
 {
-
+    [SerializeField]
+    private GameObject Canvas;
     [SerializeField]
     private GameObject LoginPanel;
     [SerializeField]
@@ -37,5 +38,13 @@ public class UIAppManager : Singleton<UIAppManager>
         LoginPanel.SetActive(false);
         RegisterPanel.SetActive(false);
         Home.SetActive(true);
+    }
+
+    public void DisableCanvas()
+    {
+        if (Canvas.activeInHierarchy)
+            Canvas.SetActive(false);
+        else
+            Canvas.SetActive(true);
     }
 }
